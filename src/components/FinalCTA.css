@@ -1,0 +1,217 @@
+/* ─── Final CTA Section ─────────────────────────────────────────────────────── */
+
+.fcta {
+  position: relative;
+  overflow: hidden;
+  background-color: #0a0a0a;
+  padding: 7rem 2rem;
+}
+
+/* Dot-grid — light dots on dark background */
+.fcta__bg-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+}
+
+/* ── Inner layout: display left, copy right (mirrors Hero) ── */
+.fcta__inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+/* ─── Mini display graphic ──────────────────────────────────────────────────── */
+
+.fcta__graphic {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 20px 48px rgba(0, 0, 0, 0.6))
+          drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+.fcta__graphic-svg {
+  width: 260px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.fcta__graphic-neck {
+  width: 22px;
+  height: 18px;
+  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+  border-radius: 0 0 2px 2px;
+}
+
+.fcta__graphic-base {
+  width: 86px;
+  height: 8px;
+  background: linear-gradient(to bottom, #282828, #1a1a1a);
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Copy ──────────────────────────────────────────────────────────────────── */
+
+.fcta__copy {
+  max-width: 480px;
+}
+
+.fcta__heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.fcta__br {
+  display: inline;
+}
+
+.fcta__subtext {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 2.5rem;
+  max-width: 400px;
+}
+
+/* ── Buttons ── */
+.fcta__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.fcta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  transition: background-color 0.18s ease, color 0.18s ease,
+              transform 0.15s ease, box-shadow 0.18s ease,
+              border-color 0.18s ease;
+  white-space: nowrap;
+}
+
+.fcta__btn:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 3px;
+}
+
+/* Primary: white fill */
+.fcta__btn--primary {
+  background-color: #ffffff;
+  color: #0a0a0a;
+}
+
+.fcta__btn--primary:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+}
+
+.fcta__btn--primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Secondary: ghost / outlined */
+.fcta__btn--secondary {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+}
+
+.fcta__btn--secondary:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.55);
+  background-color: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.fcta__btn--secondary:active {
+  transform: translateY(0);
+}
+
+.fcta__btn-arrow {
+  font-size: 1rem;
+  transition: transform 0.18s ease;
+}
+
+.fcta__btn--secondary:hover .fcta__btn-arrow {
+  transform: translateX(3px);
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .fcta__inner {
+    gap: 3.5rem;
+  }
+
+  .fcta__graphic-svg {
+    width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fcta {
+    padding: 5rem 1.5rem;
+  }
+
+  .fcta__inner {
+    flex-direction: column;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .fcta__subtext {
+    max-width: 100%;
+  }
+
+  .fcta__actions {
+    justify-content: center;
+  }
+
+  .fcta__br {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .fcta__heading {
+    font-size: 1.8rem;
+  }
+
+  .fcta__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fcta__btn {
+    justify-content: center;
+  }
+
+  .fcta__subtext {
+    font-size: 0.95rem;
+  }
+}

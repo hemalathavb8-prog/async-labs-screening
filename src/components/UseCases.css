@@ -1,0 +1,192 @@
+/* ─── Use Cases Section ─────────────────────────────────────────────────────── */
+
+.uc {
+  padding: 6rem 2rem;
+  background-color: #ffffff;
+}
+
+.uc__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ─── Section header ────────────────────────────────────────────────────────── */
+
+.uc__header {
+  max-width: 560px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.uc__eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2563eb;
+  background-color: #eff6ff;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+}
+
+.uc__heading {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: #0a0a0a;
+  margin-bottom: 1rem;
+}
+
+.uc__subtext {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* ─── Cards grid ────────────────────────────────────────────────────────────── */
+
+.uc__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ─── Individual card ───────────────────────────────────────────────────────── */
+
+.uc__card {
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.uc__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.09);
+  border-color: #d1d5db;
+}
+
+/* ── Scene visual area ── */
+.uc__scene-wrap {
+  position: relative;
+  background-color: var(--uc-accent, #f3f4f6);
+  padding: 1.5rem 1.5rem 0;
+  overflow: hidden;
+  /* Subtle inner shadow at bottom to blend scene into card */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Decorative radial glow behind the scene */
+.uc__scene-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 60%,
+    rgba(255, 255, 255, 0.55) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.uc__scene {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Lift the scene SVG slightly above the glow layer */
+  isolation: isolate;
+}
+
+/* ── Card text block ── */
+.uc__card-body {
+  padding: 1.5rem 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.uc__card-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.uc__card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+  line-height: 1.3;
+}
+
+.uc__card-desc {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #666;
+  margin-top: 0.1rem;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+
+/* Tablet: 2 + 1 layout — last card spans full width if needed,
+   but at 900px we just do 2 columns and the third drops below */
+@media (max-width: 1024px) {
+  .uc {
+    padding: 5rem 2rem;
+  }
+
+  .uc__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Third card spans both columns on tablet for balance */
+  .uc__card:last-child {
+    grid-column: 1 / -1;
+    max-width: 560px;
+    justify-self: center;
+    width: 100%;
+  }
+}
+
+/* Mobile: single column */
+@media (max-width: 640px) {
+  .uc {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .uc__header {
+    text-align: left;
+    margin-bottom: 2.5rem;
+  }
+
+  .uc__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Reset the last-child override */
+  .uc__card:last-child {
+    grid-column: auto;
+    max-width: none;
+    justify-self: auto;
+  }
+
+  .uc__card:hover {
+    transform: none;
+  }
+
+  .uc__card-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+}

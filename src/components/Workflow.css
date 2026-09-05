@@ -1,0 +1,285 @@
+/* ─── Workflow Section ──────────────────────────────────────────────────────── */
+
+.workflow {
+  padding: 6rem 2rem;
+  background-color: #ffffff;
+}
+
+.workflow__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ─── Section header ────────────────────────────────────────────────────────── */
+
+.workflow__header {
+  max-width: 560px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.workflow__eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2563eb;
+  background-color: #eff6ff;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+}
+
+.workflow__heading {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: #0a0a0a;
+  margin-bottom: 1rem;
+}
+
+.workflow__subtext {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* ─── Two-column body ───────────────────────────────────────────────────────── */
+
+.workflow__body {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+/* ─── Tab navigation ────────────────────────────────────────────────────────── */
+
+.workflow__tabs {
+  flex: 0 0 260px;
+}
+
+.workflow__tabs ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.workflow__tab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.9rem 1.1rem;
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background-color 0.18s ease, border-color 0.18s ease,
+              color 0.18s ease, transform 0.15s ease;
+  color: #555;
+}
+
+.workflow__tab:hover {
+  background-color: #f9fafb;
+  border-color: #e8e8e8;
+  color: #0a0a0a;
+  transform: translateX(2px);
+}
+
+.workflow__tab--active {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.workflow__tab--active:hover {
+  background-color: #dbeafe;
+  transform: translateX(2px);
+}
+
+.workflow__tab:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.workflow__tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background-color: #f3f4f6;
+  transition: background-color 0.18s ease;
+}
+
+.workflow__tab--active .workflow__tab-icon {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.workflow__tab-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  flex: 1;
+  letter-spacing: -0.01em;
+}
+
+.workflow__tab-arrow {
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.workflow__tab:hover .workflow__tab-arrow,
+.workflow__tab--active .workflow__tab-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── Display column ────────────────────────────────────────────────────────── */
+
+.workflow__display-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.16))
+          drop-shadow(0 4px 10px rgba(0, 0, 0, 0.07));
+}
+
+/* Outer frame just constrains the SVG width */
+.workflow__display-frame {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Cross-fade on view swap — React key trick re-mounts this div */
+.workflow__display-inner {
+  animation: wf-fadein 0.28s ease both;
+}
+
+@keyframes wf-fadein {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* The SVG itself fills its container */
+.workflow__display {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Stand neck + base — matches Hero proportions */
+.workflow__device-neck {
+  width: 28px;
+  height: 22px;
+  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+  border-radius: 0 0 2px 2px;
+}
+
+.workflow__device-base {
+  width: 110px;
+  height: 10px;
+  background: linear-gradient(to bottom, #2a2a2a, #1c1c1c);
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .workflow {
+    padding: 5rem 2rem;
+  }
+
+  .workflow__body {
+    gap: 2.5rem;
+  }
+
+  .workflow__tabs {
+    flex: 0 0 220px;
+  }
+}
+
+/* Mobile — stack vertically */
+@media (max-width: 768px) {
+  .workflow {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .workflow__header {
+    text-align: left;
+    margin-bottom: 2.5rem;
+  }
+
+  .workflow__body {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .workflow__tabs {
+    flex: none;
+  }
+
+  .workflow__tabs ul {
+    flex-direction: row;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    /* hide scrollbar on webkit */
+    scrollbar-width: none;
+  }
+
+  .workflow__tabs ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .workflow__tab {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .workflow__tab:hover {
+    transform: none;
+  }
+
+  .workflow__tab--active:hover {
+    transform: none;
+  }
+
+  .workflow__tab-arrow {
+    display: none;
+  }
+
+  .workflow__display-frame {
+    max-width: 100%;
+  }
+}
+
+/* Small mobile — keep tabs readable at 375px */
+@media (max-width: 480px) {
+  .workflow__tab {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .workflow__tab-label {
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,219 @@
+/* ─── Navbar ────────────────────────────────────────────────────────────────── */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #ffffff;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar--scrolled {
+  border-bottom-color: #e8e8e8;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Inner layout */
+.navbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ─── Brand ─────────────────────────────────────────────────────────────────── */
+
+.navbar__brand {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #0a0a0a;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.navbar__brand:hover {
+  color: #2563eb;
+}
+
+/* ─── Desktop nav links ──────────────────────────────────────────────────────── */
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+.navbar__link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #444;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.navbar__link:hover {
+  color: #0a0a0a;
+  background-color: #f3f4f6;
+}
+
+.navbar__link:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* ─── CTA button ─────────────────────────────────────────────────────────────── */
+
+.navbar__cta {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #0a0a0a;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color 0.18s ease, transform 0.15s ease;
+}
+
+.navbar__cta:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.navbar__cta:active {
+  transform: translateY(0);
+}
+
+.navbar__cta:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+/* ─── Hamburger button ───────────────────────────────────────────────────────── */
+
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: background-color 0.18s ease;
+}
+
+.navbar__hamburger:hover {
+  background-color: #f3f4f6;
+}
+
+.navbar__hamburger:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.navbar__hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #0a0a0a;
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform 0.22s ease, opacity 0.22s ease, width 0.22s ease;
+}
+
+/* Animate bars into an X when open */
+.navbar__hamburger--open .navbar__hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__hamburger--open .navbar__hamburger-bar:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.navbar__hamburger--open .navbar__hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ─── Mobile menu ────────────────────────────────────────────────────────────── */
+
+.navbar__mobile-menu {
+  display: none;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.28s ease, opacity 0.22s ease;
+  background-color: #ffffff;
+  border-top: 1px solid #e8e8e8;
+  padding: 0 2rem;
+}
+
+.navbar__mobile-menu--open {
+  max-height: 400px;
+  opacity: 1;
+  padding: 1.25rem 2rem 1.5rem;
+}
+
+.navbar__mobile-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.navbar__mobile-link {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  padding: 0.6rem 0.5rem;
+  border-radius: 6px;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.navbar__mobile-link:hover {
+  color: #0a0a0a;
+  background-color: #f3f4f6;
+}
+
+.navbar__cta--mobile {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 0.65rem 1.25rem;
+}
+
+/* ─── Responsive breakpoints ─────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* Hide desktop links and CTA */
+  .navbar__links,
+  .navbar__cta:not(.navbar__cta--mobile) {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  /* Mobile menu is block but controlled by max-height */
+  .navbar__mobile-menu {
+    display: block;
+  }
+}
