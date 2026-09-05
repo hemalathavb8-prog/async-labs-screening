@@ -4,6 +4,10 @@
 
 A responsive product landing page for **Async Labs** — a 7.5-inch e-ink workspace display that keeps important information visible without occupying your main screen. The page communicates the product concept, key benefits, workflow flexibility, and real-world placement scenarios across a polished, section-by-section layout.
 
+## Live Demo
+
+[https://async-labs-screening-indol.vercel.app/](https://async-labs-screening-indol.vercel.app/)
+
 ## Built With
 
 - [React 18](https://react.dev/) — component-based UI
